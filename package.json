@@ -1,0 +1,54 @@
+{
+  "name": "ireporter-in-react",
+  "version": "1.0.0",
+  "description": "iReporter_in_react",
+  "main": "index.js",
+  "scripts": {
+    "preinstall": "rm -rf dist",
+    "start:dev": "webpack-dev-server --mode development",
+    "lint": "eslint . --ext .js,.jsx --fix",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "pre-commit": [
+    "lint"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/olajide1234/iReporter-in-React.git"
+  },
+  "keywords": [
+    "iReporter",
+    "React",
+    "Andela"
+  ],
+  "author": "Olajide Yusuf Ayinla",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/olajide1234/iReporter-in-React/issues"
+  },
+  "homepage": "https://github.com/olajide1234/iReporter-in-React#readme",
+  "devDependencies": {
+    "@babel/core": "^7.4.3",
+    "@babel/preset-env": "^7.4.3",
+    "@babel/preset-react": "^7.0.0",
+    "babel-eslint": "^10.0.1",
+    "babel-loader": "^8.0.5",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "css-loader": "^2.1.1",
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-jsx-a11y": "^6.2.1",
+    "eslint-plugin-react": "^7.12.4",
+    "file-loader": "^3.0.1",
+    "style-loader": "^0.23.1",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.3.0",
+    "webpack-dev-server": "^3.2.1"
+  },
+  "dependencies": {
+    "express": "^4.16.4",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
+  }
+}
