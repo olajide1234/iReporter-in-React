@@ -4,10 +4,10 @@ import NotFound from '../components/notFound/notFound';
 import HomePage from '../containers/homepage';
 import SignUpPage from '../containers/signUpPage';
 import SignInPage from '../containers/signInPage';
-import { Dashboard } from '../containers/dashboard';
 import { SingleRecord } from '../containers/singleRecord';
 import CreateRecord from '../containers/createRecord';
 import { ViewDraft } from '../containers/viewDraft';
+import Dashboard from '../containers/dashboard';
 
 const AppRouter = () => (
   <BrowserRouter>

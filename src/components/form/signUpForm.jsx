@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 class SignUpForm extends Component {
   state = {
@@ -88,11 +89,6 @@ class SignUpForm extends Component {
             name="password"
           />
           <input
-            className="container_formfield--text"
-            type="text"
-            placeholder="Confirm password"
-          />
-          <input
             className="introduction_buttons introduction_buttons--signup-form"
             type="submit"
             value="Sign up"
@@ -111,5 +107,9 @@ class SignUpForm extends Component {
     );
   }
 }
+
+SignUpForm.propTypes = {
+  onSubmit: PropTypes.func.isRequired
+};
 
 export default SignUpForm;

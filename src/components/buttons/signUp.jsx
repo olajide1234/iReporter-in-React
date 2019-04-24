@@ -9,16 +9,20 @@ const SignUp = (props) => {
   return (
     <Link to={link}>
       <button className={className}>
-        {props.buttonText}
+        {buttonText}
       </button>
     </Link>
   );
 };
 
 SignUp.propTypes = {
-  link: PropTypes.string,
+  link: PropTypes.string.isRequired,
   className: PropTypes.string,
-  buttonText: PropTypes.string,
+  buttonText: PropTypes.string.isRequired,
+};
+
+SignUp.defaultProps = {
+  className: ''
 };
 
 export default SignUp;

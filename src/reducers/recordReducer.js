@@ -1,4 +1,5 @@
-// Create reducers for both stores
+import { ADD_RECORD, REMOVE_RECORD } from '../actions/actionTypes';
+
 
 const recordsReducerDefaultState = [
   {
@@ -61,45 +62,11 @@ const recordsReducerDefaultState = [
 
 export const recordsReducer = (state = recordsReducerDefaultState, action) => {
   switch (action.type) {
-    case 'ADD_RECORD':
+    case ADD_RECORD:
       state.push({ ...action.record });
       return state;
-    case 'REMOVE_RECORD':
+    case REMOVE_RECORD:
       return state;
-    default:
-      return state;
-  }
-};
-
-// const filtersReducerDefaultState = {
-//   text: "",
-//   sortBy: "date",
-//   startDate: undefined,
-//   endDate: undefined
-// };
-// export const filtersReducer = (state = filtersReducerDefaultState, action) => {
-//   switch (action.type) {
-//     default:
-//       return state;
-//   }
-// };
-
-const userReducerDemo = {
-  id: 9,
-  firstname: 'Olajide',
-  lastname: 'Ayinla',
-  othernames: 'Tolani',
-  email: 'ayinlaolajide@yahoo.com',
-  phonenumber: '8185334904',
-  username: 'olajideayinla',
-  registered: '2019-03-27T00:00:00.000Z'
-};
-
-
-export const userReducer = (state = userReducerDemo, action) => {
-  switch (action.type) {
-    case 'ADD_USER':
-      return { ...action.user };
     default:
       return state;
   }

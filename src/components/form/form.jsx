@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import PropTypes from 'prop-types';
 
 const CLOUDINARY_URL = 'https://api.cloudinary.com/v1_1/dqyytlxwe/upload';
 const CLOUDINARY_UPLOAD_PRESET = 'gl5zpyjx';
@@ -36,11 +37,9 @@ class Form extends Component {
         },
         data: formData
       });
-      console.log(data.url);
 
       this.setState(() => ({ images: data.url }));
     } catch (error) {
-      console.log(error);
     }
   }
 
@@ -59,11 +58,9 @@ class Form extends Component {
         },
         data: formData
       });
-      console.log(data.url);
 
       this.setState(() => ({ videos: data.url }));
     } catch (error) {
-      console.log(error);
     }
   }
 

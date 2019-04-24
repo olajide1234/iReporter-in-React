@@ -12,8 +12,8 @@ const BoldHeader = (props) => {
 };
 
 BoldHeader.propTypes = {
-  textHeader: PropTypes.string,
-  textBody: PropTypes.string,
+  textHeader: PropTypes.string.isRequired,
+  textBody: PropTypes.string.isRequired,
 };
 
 export default BoldHeader;

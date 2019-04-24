@@ -1,12 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Dashboard } from '../containers/dashboard';
 
 const DashboardProfile = (props) => {
   const {
     user: {
-      firstname, lastname, username, email, phoneNumber
+      firstname, lastname, username, email, phonenumber
     }
   } = props;
 
@@ -22,17 +21,17 @@ const DashboardProfile = (props) => {
       </h4>
       <p className="motivation_box_profile_details--text">{username}</p>
       <p className="motivation_box_profile_details--text">{email}</p>
-      <p className="motivation_box_profile_details--text">{phoneNumber}</p>
+      <p className="motivation_box_profile_details--text">{phonenumber}</p>
     </div>
   );
 };
 
 const mapStateToProps = state => ({
-  user: state.user
+  user: state.user.currentUser
 });
 
 DashboardProfile.propTypes = {
-  user: PropTypes.object,
+  user: PropTypes.object.isRequired,
 };
 
 export default connect(mapStateToProps)(DashboardProfile);

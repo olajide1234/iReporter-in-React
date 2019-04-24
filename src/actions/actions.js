@@ -1,6 +1,5 @@
 import axios from 'axios';
-// eslint-disable-next-line
-import thunk from 'redux-thunk';
+import { ADD_USER } from './actionTypes';
 
 const userToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIzLCJpYXQiOjE1NTM4NTIyNzEsImV4cCI6MTU1NDQ1NzA3MX0.ymi7ES-OgSHmaZmEeZ_28YIiR309HYkGDOAM37glZfw';
 
@@ -52,14 +51,15 @@ export const addUser = userData => async (dispatch) => {
   try {
     const { data } = await axios.post('https://olajide-ireporter.herokuapp.com/api/v1/auth/signup', { ...userData });
     localStorage.setItem('token', data.data[0].token);
+
     dispatch({
-      type: 'ADD_USER',
+      type: ADD_USER,
       user: data.data[0].user
     });
     return data;
   } catch (error) {
     dispatch({
-      type: 'ADD_USER',
+      type: ADD_USER,
       user: {}
     });
     return error.response.data;
@@ -71,13 +71,13 @@ export const signIn = userData => async (dispatch) => {
     const { data } = await axios.post('https://olajide-ireporter.herokuapp.com/api/v1/auth/signin', { ...userData });
     localStorage.setItem('token', data.data[0].token);
     dispatch({
-      type: 'ADD_USER',
+      type: ADD_USER,
       user: data.data[0].user
     });
     return data;
   } catch (error) {
     dispatch({
-      type: 'ADD_USER',
+      type: ADD_USER,
       user: {}
     });
     return error.response.data;

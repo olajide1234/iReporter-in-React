@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 class SignInForm extends Component {
   state = {
-    email: '',
+    username: '',
     password: ''
   };
 
@@ -15,9 +16,9 @@ class SignInForm extends Component {
 
   onSubmit = (e) => {
     e.preventDefault();
-    const { email, password } = this.state;
+    const { username, password } = this.state;
     this.props.onSubmit({
-      email,
+      username,
       password
     });
   };
@@ -29,9 +30,9 @@ class SignInForm extends Component {
           <input
             className="container_formfield--text"
             type="text"
-            placeholder="Your email"
+            placeholder="Username"
             onChange={this.onChange}
-            name="email"
+            name="username"
           />
           <input
             className="container_formfield--text"
@@ -59,5 +60,9 @@ class SignInForm extends Component {
     );
   }
 }
+
+SignInForm.propTypes = {
+  onSubmit: PropTypes.func.isRequired
+};
 
 export default SignInForm;
