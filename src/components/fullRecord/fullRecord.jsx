@@ -1,17 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 const FullRecord = (props) => {
-  const { id } = props;
-
-  console.log(id);
-
-
-  const { records } = props;
+  const { id, records } = props;
 
   const filteredRecord = records.filter(record => record.id === Number(id));
-
-  console.log(filteredRecord);
 
   return (
     <div className="motivation_box_profile motivation_box_profile_record motivation_box_profile_record--single_record">
@@ -111,5 +105,10 @@ Place
 const mapStateToProps = state => ({
   records: state.records
 });
+
+FullRecord.propTypes = {
+  id: PropTypes.string.isRequired,
+  records: PropTypes.array.isRequired
+};
 
 export default connect(mapStateToProps)(FullRecord);

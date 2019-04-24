@@ -1,8 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 const Header = (props) => {
-  const { firstname } = props.user;
+  const { user: { firstname } } = props;
 
   if (firstname) {
     return (
@@ -42,7 +43,7 @@ Reporter
           <button className="header_branding--url-signout--button">
             <a
                 className="header_branding--url header_branding--url-signout"
-                href="sign_up.html"
+                href="sign_up"
               >
                 Sign up
             </a>
@@ -51,7 +52,7 @@ Reporter
         <nav className="header_nav">
           <a
               className="header_branding--url header_branding--url-signout header_branding--url-signout--in"
-              href="sign_in.html"
+              href="sign_in"
             >
               SIGN IN
           </a>
@@ -62,6 +63,12 @@ Reporter
 };
 
 const mapStateToProps = state => ({
-  user: state.user
+  user: state.user.currentUser
 });
+
+Header.propTypes = {
+  user: PropTypes.object.isRequired
+};
+
+
 export default connect(mapStateToProps)(Header);

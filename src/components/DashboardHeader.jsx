@@ -3,8 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 const DashboardHeader = (props) => {
-  const { records } = props;
-  const { status, type } = props;
+  const { records, status, type } = props;
 
   const filteredRecords = records.filter(
     record => record.status === status && record.type === type
@@ -29,9 +28,9 @@ const mapStateToProps = state => ({
 });
 
 DashboardHeader.propTypes = {
-  records: PropTypes.array,
-  status: PropTypes.string,
-  type: PropTypes.string,
+  records: PropTypes.array.isRequired,
+  status: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
 };
 
 export default connect(mapStateToProps)(DashboardHeader);

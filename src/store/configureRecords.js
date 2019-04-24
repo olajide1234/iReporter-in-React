@@ -2,14 +2,14 @@ import {
   createStore, combineReducers, compose, applyMiddleware
 } from 'redux';
 import thunk from 'redux-thunk';
-import { recordsReducer, userReducer } from '../reducers/reducers';
+import { userReducer } from '../reducers/authReducer';
+import { recordsReducer } from '../reducers/recordReducer';
 
-// Create Store
 
 const store = createStore(
   combineReducers({
-    records: recordsReducer,
-    user: userReducer
+    user: userReducer,
+    records: recordsReducer
   }),
   compose(
     applyMiddleware(thunk),

@@ -1,18 +1,18 @@
 export const imageAndTextBelowData = [
   {
-    image: '../../public/images/wallet.png',
+    image: 'https://res.cloudinary.com/dqyytlxwe/image/upload/v1556088291/wallet.png',
     headerText: 'Corruption affects us all!',
     bottomText:
       'From poor healthcare services to low quality of education, corruption affects us all! Why not do something about it now?'
   },
   {
-    image: './images/bulb.png',
+    image: 'https://res.cloudinary.com/dqyytlxwe/image/upload/v1556088301/bulb.png',
     headerText: 'Act now or it maybe too late!',
     bottomText:
       'Corruption is a monster that grows daily and threatens to consume us all. The more you delay to act, the bigger corruption becomes.'
   },
   {
-    image: './images/money.png',
+    image: 'https://res.cloudinary.com/dqyytlxwe/image/upload/v1556088312/money.png',
     headerText: 'No pain, no gain!',
     bottomText:
       'Does it seem easier to keep quiet and just let that bribe pass? Think of our future, no pain now, no gain tomorrow.'
