@@ -61,13 +61,7 @@
         "react/jsx-indent-props": 0,
         "react/jsx-key": 1,
         "react/jsx-max-props-per-line": 0,
-        "react/jsx-no-bind": [ 1, {
-          "ignoreDOMComponents": false,
-          "ignoreRefs": false,
-          "allowArrowFunctions": false,
-          "allowFunctions": false,
-          "allowBind": true
-        }],
+        "react/jsx-no-bind": 0,
         "react/jsx-no-duplicate-props": 1,
         "react/jsx-no-literals": 0,
         "react/jsx-no-undef": 1,
@@ -91,6 +85,7 @@
         "react/require-extension": 0,
         "react/self-closing-comp": 1,
         "react/sort-comp": 1,
+        "react/destructuring-assignment": 0,
         "react/wrap-multilines": 0,
         "react/jsx-filename-extension": 0,
         "react/no-unescaped-entities":["error", { "forbid": [] }],

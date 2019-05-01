@@ -1,6 +1,6 @@
 import React from 'react';
 import RecordSummary from '../components/recordSummary/recordSummary';
-import { NavLinkHeader } from '../components/NavLinkHeader';
+import NavLinkHeader from '../components/NavLinkHeader';
 import DashboardProfile from '../components/DashboardProfile';
 import DashboardHeader from '../components/DashboardHeader';
 import SignUp from '../components/buttons/signUp';

@@ -1,11 +1,11 @@
 import React from 'react';
 import DraftRecordSummary from '../components/recordSummary/draftRecordSummary';
-import { NavLinkHeader } from '../components/NavLinkHeader';
+import NavLinkHeader from '../components/NavLinkHeader';
 import DashboardProfile from '../components/DashboardProfile';
 import DashboardHeader from '../components/DashboardHeader';
 import SignUp from '../components/buttons/signUp';
 
-export const ViewDraft = () => (
+const ViewDraft = () => (
   <div>
     <NavLinkHeader title="/ VIEW DRAFTS" />
     <section className="introduction introduction_create-record introduction_create-record_record-page">
@@ -39,3 +39,5 @@ export const ViewDraft = () => (
     </section>
   </div>
 );
+
+export default ViewDraft;

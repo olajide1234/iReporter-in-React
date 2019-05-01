@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const ImageAndTextBelow = (props) => {
   const { header, bottom, image } = props;
@@ -9,6 +10,12 @@ const ImageAndTextBelow = (props) => {
       <p>{bottom}</p>
     </div>
   );
+};
+
+ImageAndTextBelow.propTypes = {
+  header: PropTypes.string.isRequired,
+  bottom: PropTypes.string.isRequired,
+  image: PropTypes.string.isRequired,
 };
 
 export default ImageAndTextBelow;

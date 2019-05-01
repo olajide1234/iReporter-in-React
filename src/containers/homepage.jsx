@@ -6,7 +6,7 @@ import SignUp from '../components/buttons/signUp';
 
 const RenderThreeColumImageAndText = () => componentData.imageAndTextBelowData.map(
   imageAndTextBelowData => (
-    <div className="motivation_box">
+    <div className="motivation_box" key={imageAndTextBelowData.headerText}>
       <ImageAndTextBelow
         image={imageAndTextBelowData.image}
         header={imageAndTextBelowData.headerText}
