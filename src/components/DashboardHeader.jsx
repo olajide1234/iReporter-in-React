@@ -24,7 +24,7 @@ const DashboardHeader = (props) => {
 };
 
 const mapStateToProps = state => ({
-  records: state.records
+  records: state.recordsReducer.records
 });
 
 DashboardHeader.propTypes = {

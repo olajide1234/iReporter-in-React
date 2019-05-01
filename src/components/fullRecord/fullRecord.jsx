@@ -1,52 +1,49 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 const FullRecord = (props) => {
-  const { id, records } = props;
-
-  const filteredRecord = records.filter(record => record.id === Number(id));
+  const { record } = props;
 
   return (
     <div className="motivation_box_profile motivation_box_profile_record motivation_box_profile_record--single_record">
-      <div className={`motivation_box_profile_header motivation_box_profile_card_header motivation_box_profile_header--${filteredRecord[0].status}`}>
-        <p className="motivation_box_card--status">{filteredRecord[0].dateofincident}</p>
+      <div className={`motivation_box_profile_header motivation_box_profile_card_header motivation_box_profile_header--${record.status}`}>
+        <p className="motivation_box_card--status">{record.dateofincident}</p>
       </div>
       <div className="motivation_box_card--header--title motivation_box_card--header--title--single_record">
         <h2 className="motivation_box_card--header motivation_box_card--header--singlerecord">
-          {filteredRecord[0].title}
+          {record.title}
         </h2>
       </div>
       <div className="motivation_box_profile_body motivation_box_profile_body_single_record">
         <div className="single_record_buttons">
           <button className="introduction_buttons introduction_buttons--redflag introduction_buttons--redflag--recordcard introduction_buttons--redflag--recordcard--info">
-            {filteredRecord[0].type}
+            {record.type}
           </button>
           <button className="introduction_buttons introduction_buttons--redflag introduction_buttons--redflag--recordcard introduction_buttons--redflag--recordcard--statusisresolved introduction_buttons--redflag--recordcard--info">
-            {filteredRecord[0].status}
+            {record.status}
           </button>
           <button className="introduction_buttons introduction_buttons--redflag introduction_buttons--redflag--recordcard introduction_buttons--redflag--recordcard--info">
-            {filteredRecord[0].images.length}
+            {record.images}
             {' '}
-Images
+            Images
           </button>
           <button className="introduction_buttons introduction_buttons--redflag introduction_buttons--redflag--recordcard introduction_buttons--redflag--recordcard--info">
-            {filteredRecord[0].videos.length}
+            {record.videos}
             {' '}
-Videos
+            Videos
           </button>
           <button className="introduction_buttons introduction_buttons--redflag introduction_buttons--redflag--recordcard introduction_buttons--redflag--recordcard--info">
-            {filteredRecord[0].location}
+            {record.location}
             {' '}
-Place
+            Place
           </button>
         </div>
-        <div className="motivation_box_card--text">{filteredRecord[0].comment}</div>
+        <div className="motivation_box_card--text">{record.comment}</div>
 
         <div className="motivation_box_card--images">
           <div className="motivation_box_card--innerimages">
             <img
-              src={`${filteredRecord[0].images}`}
+              src={`${record.images}`}
               alt="Police corruption"
               width="300"
               height="200"
@@ -102,13 +99,9 @@ Place
   );
 };
 
-const mapStateToProps = state => ({
-  records: state.records
-});
 
 FullRecord.propTypes = {
-  id: PropTypes.string.isRequired,
-  records: PropTypes.array.isRequired
+  record: PropTypes.object.isRequired,
 };
 
-export default connect(mapStateToProps)(FullRecord);
+export default FullRecord;

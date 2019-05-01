@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { Alert, Row, Col } from 'react-bootstrap';
+import PropTypes from 'prop-types';
 import BoldHeader from '../components/boldHeader/boldHeader';
 import * as componentData from '../store/componentData';
 import SignUpForm from '../components/form/signUpForm';
@@ -49,6 +50,11 @@ const SignUpPage = (props) => {
 
 const mapDispatchProps = {
   addUser
+};
+
+SignUpPage.propTypes = {
+  addUser: PropTypes.func.isRequired,
+  history: PropTypes.object.isRequired
 };
 
 export default connect(() => ({}), mapDispatchProps)(SignUpPage);

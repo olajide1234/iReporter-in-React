@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
-export const NavLinkHeader = (props) => {
+const NavLinkHeader = (props) => {
   const { title } = props;
   return (
     <section className="introduction introduction_profile">
@@ -15,10 +16,16 @@ export const NavLinkHeader = (props) => {
               HOME
             </Link>
             {' '}
-            {props.title}
+            {title}
           </p>
         </div>
       </div>
     </section>
   );
 };
+
+NavLinkHeader.propTypes = {
+  title: PropTypes.string.isRequired
+};
+
+export default NavLinkHeader;

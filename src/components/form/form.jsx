@@ -11,8 +11,8 @@ class Form extends Component {
     title: '',
     type: '',
     comment: '',
-    images: '',
-    videos: '',
+    images: 'www.null.com',
+    videos: 'www.null.com',
     location: ''
   };
 
@@ -40,6 +40,7 @@ class Form extends Component {
 
       this.setState(() => ({ images: data.url }));
     } catch (error) {
+      return error;
     }
   }
 
@@ -58,9 +59,9 @@ class Form extends Component {
         },
         data: formData
       });
-
       this.setState(() => ({ videos: data.url }));
     } catch (error) {
+      return error;
     }
   }
 
@@ -68,7 +69,7 @@ class Form extends Component {
   onSubmit = (e) => {
     e.preventDefault();
     const {
-      dateOfIncident, title, type, comment, images, video, location
+      dateOfIncident, title, type, comment, images, videos, location
     } = this.state;
     this.props.onSubmit({
       dateOfIncident,
@@ -106,7 +107,7 @@ class Form extends Component {
           <select onChange={this.onChange} name="type" className="container_formfield--text">
             <option value="Default"> Select record type</option>
             <option value="red-flag"> Red-flag</option>
-            <option value="Intervention">Intervention</option>
+            <option value="intervention">Intervention</option>
           </select>
           <p className="container_formfield_label">Narration of incident</p>
           <textarea
@@ -150,5 +151,9 @@ class Form extends Component {
     );
   }
 }
+
+Form.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+};
 
 export default Form;
