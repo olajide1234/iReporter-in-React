@@ -1,51 +1,56 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import {
+  Card, Row, Col, Container
+} from 'react-bootstrap';
 import { connect } from 'react-redux';
 
-const RecordSummary = props => props.records.map(data => (
-  <Link key={data.id} to={`/single/${data.id}`}>
-    <div className="motivation_box_profile motivation_box_profile_record">
-      <div className={`motivation_box_profile_header motivation_box_profile_card_header motivation_box_profile_header--${data.status}`}>
-        <p className="motivation_box_card--status">{data.dateofincident}</p>
-      </div>
-      <div className="motivation_box_card--header--title">
-        <h3 className="motivation_box_card--header">{data.title}</h3>
-      </div>
-      <div className="motivation_box_profile_body">
-        <p className="motivation_box_card--text motivation_box_card--cardtext">
-          {data.comment}
-        </p>
-      </div>
-      <div className="motivation_box_card_tagholder">
-        <button className="introduction_buttons introduction_buttons--redflag introduction_buttons--redflag--recordcard introduction_buttons--redflag--recordcard--info">
-          {data.type}
+const RecordSummary = props => props.records.map(record => (
+  <Link key={record.id} to={`/single/${record.id}`}>
+    <>
+      <Card>
+        <Card.Header className="upper-case">
+          {record.status}
           {' '}
-record
-        </button>
-        <button className="introduction_buttons introduction_buttons--redflag introduction_buttons--redflag--recordcard introduction_buttons--redflag--recordcard--info introduction_buttons--redflag--recordcard--{data[0].type}">
-          {data.status}
-        </button>
-        <button className="introduction_buttons introduction_buttons--redflag introduction_buttons--redflag--recordcard introduction_buttons--redflag--recordcard--info">
-          {data.images.length}
+          {record.owner_id === props.user.id ? <p className="float-right">Created by me</p> : null }
           {' '}
-Images
-        </button>
-        <button className="introduction_buttons introduction_buttons--redflag introduction_buttons--redflag--recordcard introduction_buttons--redflag--recordcard--info">
-          {data.videos.length}
-          {' '}
-Videos
-        </button>
-        <button className="introduction_buttons introduction_buttons--redflag introduction_buttons--redflag--recordcard introduction_buttons--redflag--recordcard--info">
-          {data.location.length}
-          {' '}
-Place
-        </button>
-      </div>
-    </div>
+        </Card.Header>
+        <Card.Body>
+          <Card.Title className="text-center upper-case">
+            {record.title}
+            {' '}
+          </Card.Title>
+          <Container>
+            <Row className="mb-5">
+              <Col>
+                {record.dateofincident}
+              </Col>
+              <Col className="upper-case">
+                {record.type}
+              </Col>
+              <Col className="upper-case">
+                {record.location}
+              </Col>
+            </Row>
+          </Container>
+          <Card.Text>
+            {record.comment}
+          </Card.Text>
+        </Card.Body>
+        <Card.Footer>
+        </Card.Footer>
+      </Card>
+    </>
   </Link>
 ));
 
 const mapStateToProps = state => ({
-  records: state.records
+  user: state.user.currentUser
 });
+
+RecordSummary.propTypes = {
+  records: PropTypes.array.isRequired,
+};
+
 export default connect(mapStateToProps)(RecordSummary);

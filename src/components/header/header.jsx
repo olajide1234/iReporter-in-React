@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 const Header = (props) => {
   const { user: { firstname } } = props;
@@ -11,10 +12,12 @@ const Header = (props) => {
         <div className="container">
           <div className="header_branding">
             <h1 className="header_branding--text">
-              <a className="header_branding--url" href="/">
-                <span className="header_branding--highlight">i</span>
-Reporter
-              </a>
+              <Link to="/dashboard">
+                <p className="header_branding--url">
+                  <span className="header_branding--highlight">i</span>
+                  Reporter
+                </p>
+              </Link>
             </h1>
           </div>
           <nav className="header_nav">
@@ -35,26 +38,26 @@ Reporter
           <h1 className="header_branding--text">
             <a className="header_branding--url" href="index.html">
               <span className="header_branding--highlight">i</span>
-Reporter
+              Reporter
             </a>
           </h1>
         </div>
         <nav className="header_nav header_branding--url-signout--buttonnav">
           <button className="header_branding--url-signout--button">
             <a
-                className="header_branding--url header_branding--url-signout"
-                href="sign_up"
-              >
-                Sign up
+              className="header_branding--url header_branding--url-signout"
+              href="sign_up"
+            >
+              Sign up
             </a>
           </button>
         </nav>
         <nav className="header_nav">
           <a
-              className="header_branding--url header_branding--url-signout header_branding--url-signout--in"
-              href="sign_in"
-            >
-              SIGN IN
+            className="header_branding--url header_branding--url-signout header_branding--url-signout--in"
+            href="sign_in"
+          >
+            SIGN IN
           </a>
         </nav>
       </div>

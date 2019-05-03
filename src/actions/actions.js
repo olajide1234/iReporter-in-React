@@ -1,5 +1,7 @@
 import axios from 'axios';
-import { ADD_USER, GET_RECORD } from './actionTypes';
+import {
+  ADD_USER, GET_RECORD, GET_RECORDS, EDIT_COMMENT, EDIT_LOCATION, DELETE_RECORD
+} from './actionTypes';
 
 export const addRecord = record => async (dispatch) => {
   try {
@@ -75,6 +77,30 @@ export const getRecord = id => async (dispatch) => {
   }
 };
 
+export const getRecords = () => async (dispatch) => {
+  const token = localStorage.getItem('token');
+
+  try {
+    const { data } = await axios({
+      url: 'https://olajide-ireporter.herokuapp.com/api/v1/records/interventions',
+      method: 'GET',
+      headers: {
+        'x-access-token': token
+      }
+    });
+
+    dispatch({
+      type: GET_RECORDS,
+      record: data.data
+    });
+    return data.data;
+  } catch (error) {
+    dispatch({
+      type: GET_RECORDS,
+      record: {}
+    });
+  }
+};
 
 export const addUser = userData => async (dispatch) => {
   try {
@@ -112,5 +138,95 @@ export const signIn = userData => async (dispatch) => {
       user: {}
     });
     return error.response.data;
+  }
+};
+
+export const editComment = (comment, id) => async (dispatch) => {
+  const token = localStorage.getItem('token');
+  try {
+    const res = await axios({
+      url: `https://olajide-ireporter.herokuapp.com/api/v1/records/interventions/${id}/comment`,
+      method: 'PATCH',
+      headers: {
+        'x-access-token': token
+      },
+      data: { comment }
+    });
+
+    dispatch({
+      type: EDIT_COMMENT,
+      record: {}
+    });
+
+    return { type: 'success', message: res };
+  } catch (error) {
+    dispatch({
+      type: EDIT_COMMENT,
+      record: {}
+    });
+
+    if (error.response && error.response.data) { return { type: 'error', message: error.response.data.error }; }
+
+    return { type: 'error', message: 'An error occured, please try later' };
+  }
+};
+
+export const editLocation = (location, id) => async (dispatch) => {
+  const token = localStorage.getItem('token');
+  try {
+    const res = await axios({
+      url: `https://olajide-ireporter.herokuapp.com/api/v1/records/interventions/${id}/location`,
+      method: 'PATCH',
+      headers: {
+        'x-access-token': token
+      },
+      data: { location }
+    });
+
+    dispatch({
+      type: EDIT_LOCATION,
+      record: {}
+    });
+
+    return { type: 'success', message: res };
+  } catch (error) {
+    dispatch({
+      type: EDIT_LOCATION,
+      record: {}
+    });
+
+    if (error.response && error.response.data) { return { type: 'error', message: error.response.data.error }; }
+
+    return { type: 'error', message: 'An error occured, please try later' };
+  }
+};
+
+export const deleteRecord = id => async (dispatch) => {
+  const token = localStorage.getItem('token');
+  try {
+    const res = await axios({
+      url: `https://olajide-ireporter.herokuapp.com/api/v1/records/interventions/${id}`,
+      method: 'DELETE',
+      headers: {
+        'x-access-token': token
+      },
+      data: { id }
+    });
+
+    dispatch({
+      type: DELETE_RECORD,
+      record: {}
+    });
+
+    return { type: 'success', message: res };
+  } catch (error) {
+    dispatch({
+      type: DELETE_RECORD,
+      record: {}
+    });
+
+    if (error.response && error.response.data) { return { type: 'error', message: error.response.data.error }; }
+
+    return { type: 'error', message: 'An error occured, please try later' };
   }
 };
