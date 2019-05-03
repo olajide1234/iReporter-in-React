@@ -1,4 +1,6 @@
-import { ADD_RECORD, REMOVE_RECORD, GET_RECORD } from '../actions/actionTypes';
+import {
+  ADD_RECORD, REMOVE_RECORD, GET_RECORD, GET_RECORDS
+} from '../actions/actionTypes';
 
 
 const recordsReducerDefaultState = {
@@ -39,6 +41,8 @@ const recordsReducer = (state = recordsReducerDefaultState, action) => {
     case ADD_RECORD:
       state.records.push({ ...action.record });
       return state;
+    case GET_RECORDS:
+      return { ...state, records: action.record };
     case GET_RECORD:
       return { ...state, record: action.record };
     case REMOVE_RECORD:

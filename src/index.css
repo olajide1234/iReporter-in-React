@@ -12,6 +12,25 @@ body {
   line-height: 1.5;
 }
 
+a {
+  color: inherit;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+a:hover {
+  color: inherit;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+.card {
+  margin-top: 20px;
+}
+
+.upper-case {
+  text-transform: uppercase
+}
 /* Global */
 .container {
   width: 80%;
@@ -246,6 +265,15 @@ margin-bottom: 5px;
   margin: 3%;
   margin-left: 1.5%;
   width: 243px;
+  height: 40px;
+  padding: 2px 30px;
+}
+
+.introduction_buttons--redflag--card {
+  float: none;
+  margin-left: 2%;
+  margin-right: 2%;
+  width: 20%;
   height: 40px;
   padding: 2px 30px;
 }

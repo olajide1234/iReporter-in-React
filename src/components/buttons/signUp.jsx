@@ -1,24 +1,26 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { Button } from 'react-bootstrap';
 
 
 const SignUp = (props) => {
-  const { link, className, buttonText } = props;
+  const {
+    className, buttonText, variant, onClick
+  } = props;
 
   return (
-    <Link to={link}>
-      <button className={className}>
-        {buttonText}
-      </button>
-    </Link>
+    <Button className={className} variant={variant} onClick={onClick}>
+      {buttonText}
+    </Button>
   );
 };
 
 SignUp.propTypes = {
-  link: PropTypes.string.isRequired,
+  variant: PropTypes.string.isRequired,
   className: PropTypes.string,
   buttonText: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired,
+
 };
 
 SignUp.defaultProps = {

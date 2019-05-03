@@ -14,7 +14,7 @@ const SingleRecord = (props) => {
 
   useEffect(() => {
     props.getRecord(id);
-  }, []);
+  }, [record.comment, record.location]);
 
   return (
     <div>
@@ -23,7 +23,7 @@ const SingleRecord = (props) => {
         <div className="container">
           <div className="motivation_box_profile motivation_box_profile_details motivation_box_profile_details_outer">
             <DashboardProfile />
-            <SignUp buttonText="Create record" className="introduction_buttons introduction_buttons--redflag introduction_buttons--redflag--createrecord" />
+            <SignUp buttonText="Create record" className="introduction_buttons introduction_buttons--redflag introduction_buttons--redflag--createrecord" link="/create_record" />
           </div>
           <div className="motivation_box_profile_summary">
             <h3 className="motivation_box_profile_summary_divheader"> Red-flag records</h3>
@@ -44,7 +44,7 @@ const SingleRecord = (props) => {
       <section className="motivation motivation_record">
         <div className="container">
           <div className="container motivation_record_list motivation_record_list_view-record">
-            <FullRecord record={{ ...record }} />
+            <FullRecord record={{ ...record }} onEdit={() => props.getRecord(id)} />
           </div>
         </div>
       </section>
