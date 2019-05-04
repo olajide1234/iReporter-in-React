@@ -57,7 +57,7 @@ export const getRecord = id => async (dispatch) => {
 
   try {
     const { data } = await axios({
-      url: `https://olajide-ireporter.herokuapp.com/api/v1/records/interventions/${id}`,
+      url: `https://olajide-ireporter.herokuapp.com/api/v1/records/${id}`,
       method: 'GET',
       headers: {
         'x-access-token': token
@@ -82,7 +82,7 @@ export const getRecords = () => async (dispatch) => {
 
   try {
     const { data } = await axios({
-      url: 'https://olajide-ireporter.herokuapp.com/api/v1/records/interventions',
+      url: 'https://olajide-ireporter.herokuapp.com/api/v1/records',
       method: 'GET',
       headers: {
         'x-access-token': token
@@ -112,12 +112,9 @@ export const addUser = userData => async (dispatch) => {
       type: ADD_USER,
       user: data.data[0].user
     });
+
     return data;
   } catch (error) {
-    dispatch({
-      type: ADD_USER,
-      user: {}
-    });
     return error.response.data;
   }
 };
@@ -133,10 +130,6 @@ export const signIn = userData => async (dispatch) => {
     });
     return data;
   } catch (error) {
-    dispatch({
-      type: ADD_USER,
-      user: {}
-    });
     return error.response.data;
   }
 };
@@ -145,7 +138,7 @@ export const editComment = (comment, id) => async (dispatch) => {
   const token = localStorage.getItem('token');
   try {
     const res = await axios({
-      url: `https://olajide-ireporter.herokuapp.com/api/v1/records/interventions/${id}/comment`,
+      url: `https://olajide-ireporter.herokuapp.com/api/v1/records/${id}/comment`,
       method: 'PATCH',
       headers: {
         'x-access-token': token
@@ -175,7 +168,7 @@ export const editLocation = (location, id) => async (dispatch) => {
   const token = localStorage.getItem('token');
   try {
     const res = await axios({
-      url: `https://olajide-ireporter.herokuapp.com/api/v1/records/interventions/${id}/location`,
+      url: `https://olajide-ireporter.herokuapp.com/api/v1/records/${id}/location`,
       method: 'PATCH',
       headers: {
         'x-access-token': token
@@ -205,7 +198,7 @@ export const deleteRecord = id => async (dispatch) => {
   const token = localStorage.getItem('token');
   try {
     const res = await axios({
-      url: `https://olajide-ireporter.herokuapp.com/api/v1/records/interventions/${id}`,
+      url: `https://olajide-ireporter.herokuapp.com/api/v1/records/${id}`,
       method: 'DELETE',
       headers: {
         'x-access-token': token

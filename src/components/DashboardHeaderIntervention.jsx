@@ -3,16 +3,16 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Card, CardDeck } from 'react-bootstrap';
 import {
-  redFlagInvestigation, redFlagRejected, redFlagResolved, redFlagDraft
+  interventionInvestigation, interventionRejected, interventionResolved, interventionDraft
 } from '../actions/stats';
 
 
-const DashboardHeader = (props) => {
+const DashboardHeaderIntervention = (props) => {
   useEffect(() => {
-    props.redFlagDraft();
-    props.redFlagInvestigation();
-    props.redFlagRejected();
-    props.redFlagResolved();
+    props.interventionDraft();
+    props.interventionInvestigation();
+    props.interventionRejected();
+    props.interventionResolved();
   }, []);
 
   return (
@@ -21,7 +21,7 @@ const DashboardHeader = (props) => {
         <Card.Header className="upper-case">Draft</Card.Header>
         <Card.Body>
           <Card.Text>
-            {props.stat.redFlagDraft}
+            {props.stat.interventionDraft}
           </Card.Text>
         </Card.Body>
       </Card>
@@ -29,7 +29,7 @@ const DashboardHeader = (props) => {
         <Card.Header className="upper-case">Resolved</Card.Header>
         <Card.Body>
           <Card.Text>
-            {props.stat.redFlagResolved}
+            {props.stat.interventionResolved}
           </Card.Text>
         </Card.Body>
       </Card>
@@ -37,7 +37,7 @@ const DashboardHeader = (props) => {
         <Card.Header className="upper-case">Investigation</Card.Header>
         <Card.Body>
           <Card.Text>
-            {props.stat.redFlagInvestigation}
+            {props.stat.interventionInvestigation}
           </Card.Text>
         </Card.Body>
       </Card>
@@ -45,7 +45,7 @@ const DashboardHeader = (props) => {
         <Card.Header className="upper-case">Rejected</Card.Header>
         <Card.Body>
           <Card.Text>
-            {props.stat.redFlagRejected}
+            {props.stat.interventionRejected}
           </Card.Text>
         </Card.Body>
       </Card>
@@ -57,14 +57,14 @@ const mapStateToProps = state => ({
   stat: state.statReducer
 });
 
-DashboardHeader.propTypes = {
+DashboardHeaderIntervention.propTypes = {
+  interventionDraft: PropTypes.func.isRequired,
+  interventionRejected: PropTypes.func.isRequired,
+  interventionResolved: PropTypes.func.isRequired,
+  interventionInvestigation: PropTypes.func.isRequired,
   stat: PropTypes.object.isRequired,
-  redFlagDraft: PropTypes.func.isRequired,
-  redFlagInvestigation: PropTypes.func.isRequired,
-  redFlagResolved: PropTypes.func.isRequired,
-  redFlagRejected: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, {
-  redFlagInvestigation, redFlagRejected, redFlagResolved, redFlagDraft
-})(DashboardHeader);
+  interventionInvestigation, interventionRejected, interventionResolved, interventionDraft
+})(DashboardHeaderIntervention);
