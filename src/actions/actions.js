@@ -1,6 +1,6 @@
 import axios from 'axios';
 import {
-  ADD_USER, GET_RECORD, GET_RECORDS, EDIT_COMMENT, EDIT_LOCATION, DELETE_RECORD
+  ADD_USER, GET_RECORD, GET_RECORDS, EDIT_COMMENT, EDIT_LOCATION, DELETE_RECORD, LOGOUT_USER
 } from './actionTypes';
 
 export const addRecord = record => async (dispatch) => {
@@ -228,5 +228,21 @@ export const deleteRecord = id => async (dispatch) => {
     if (error.response && error.response.data) { return { type: 'error', message: error.response.data.error }; }
 
     return { type: 'error', message: 'An error occured, please try later' };
+  }
+};
+
+export const signOut = () => async (dispatch) => {
+  try {
+    dispatch({
+      type: LOGOUT_USER,
+      user: {}
+    });
+    return 'Success';
+  } catch (error) {
+    dispatch({
+      type: LOGOUT_USER,
+      user: {}
+    });
+    return 'Other errors';
   }
 };

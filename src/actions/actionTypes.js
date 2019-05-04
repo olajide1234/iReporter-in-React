@@ -7,3 +7,4 @@ export const GET_RECORDS = 'GET_RECORDS';
 export const EDIT_COMMENT = 'EDIT_COMMENT';
 export const EDIT_LOCATION = 'EDIT_LOCATION';
 export const DELETE_RECORD = 'DELETE_RECORD';
+export const LOGOUT_USER = 'LOGOUT_USER';

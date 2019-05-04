@@ -63,7 +63,7 @@ const FullRecord = (props) => {
   const onDelete = async (recordId) => {
     props.deleteRecord(recordId).then((res) => {
       if (res.type === 'error') { setAlertMessage({ message: `${res.message}`, visibility: true }); } else {
-        props.history.push('/dashboard');
+        props.props.history.push('/dashboard');
       }
     });
   };
@@ -91,9 +91,13 @@ const FullRecord = (props) => {
           <Container>
             <Row className="mb-5">
               <Col>
+              DATE OF INCIDENT:
+                {' '}
                 {record.dateofincident}
               </Col>
               <Col className="upper-case">
+              Record type:
+                {' '}
                 {record.type}
               </Col>
               <Col className="upper-case">
@@ -103,7 +107,14 @@ const FullRecord = (props) => {
                       <Form.Control as="textarea" rows="3" defaultValue={location.location} onChange={onChangeLocation} name="location" />
                     </Form>
                   )
-                  : record.location}
+                  : (
+                    <p>
+Location:
+                      {record.location}
+                      {' '}
+
+                    </p>
+                  )}
               </Col>
             </Row>
           </Container>
@@ -181,6 +192,7 @@ FullRecord.propTypes = {
   editComment: PropTypes.func.isRequired,
   history: PropTypes.object.isRequired,
   deleteRecord: PropTypes.func.isRequired,
+  props: PropTypes.object.isRequired,
 };
 
 export default connect(mapStateToProps, { editComment, editLocation, deleteRecord })(FullRecord);

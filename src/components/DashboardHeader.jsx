@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { Card } from 'react-bootstrap';
 
 const DashboardHeader = (props) => {
   const { records, status, type } = props;
@@ -10,16 +11,14 @@ const DashboardHeader = (props) => {
   );
 
   return (
-    <div className=" motivation_box_profile motivation_box_profile_summary_inner">
-      <div className="motivation_box_profile_header motivation_box_profile_card_header_summary motivation_box_profile_header--summary">
-        <p>{status}</p>
-      </div>
-      <div>
-        <h2 className="motivation_box_profile_text--successful">
+    <Card>
+      <Card.Header className="upper-case">{status}</Card.Header>
+      <Card.Body>
+        <Card.Text>
           {filteredRecords.length}
-        </h2>
-      </div>
-    </div>
+        </Card.Text>
+      </Card.Body>
+    </Card>
   );
 };
 
