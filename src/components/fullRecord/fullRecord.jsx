@@ -6,8 +6,8 @@ import {
 } from 'react-bootstrap';
 import SignUp from '../buttons/signUp';
 import { editComment, editLocation, deleteRecord } from '../../actions/actions';
-import Alerts from '../Alerts';
-import ModalAlert from '../ModalAlert/modalAlert';
+import Alerts from '../alerts/alerts';
+import ModalAlert from '../modalAlert/modalAlert';
 
 
 const FullRecord = (props) => {
@@ -91,12 +91,12 @@ const FullRecord = (props) => {
           <Container>
             <Row className="mb-5">
               <Col>
-              DATE OF INCIDENT:
+                DATE OF INCIDENT:
                 {' '}
                 {record.dateofincident}
               </Col>
               <Col className="upper-case">
-              Record type:
+                Record type:
                 {' '}
                 {record.type}
               </Col>
@@ -109,7 +109,7 @@ const FullRecord = (props) => {
                   )
                   : (
                     <p>
-Location:
+                      Location:
                       {record.location}
                       {' '}
 
@@ -129,25 +129,26 @@ Location:
           </Card.Text>
           <Container>
             <Row className="mt-3">
-              <Col>
-                <img
-                  src={`${record.images}`}
-                  alt="Police corruption"
-                  width="300"
-                  height="200"
-                />
-              </Col>
-              <Col>
-                <iframe
-                  title="Incident video"
-                  width="200"
-                  height="150"
-                  src="https://www.youtube.com/embed/arodYGXdzlc"
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                />
-              </Col>
+              {record.images
+                ? (
+                  <Col>
+                    <img
+                      src={`${record.images}`}
+                      alt="Evidence"
+                      width="300"
+                      height="200"
+                    />
+                  </Col>
+                ) : null}
+              {record.videos
+                ? (
+                  <Col>
+                    <video width="320" height="240" controls>
+                      <source src={`${record.videos}`} type="video/mp4" />
+                      Your browser does not support the video tag.
+                    </video>
+                  </Col>
+                ) : null}
             </Row>
           </Container>
         </Card.Body>
@@ -160,15 +161,15 @@ Location:
                     <Col>
                       {comment.comment
                         ? <SignUp buttonText="Save comments" onClick={() => { submit(comment.comment, record.id); }} />
-                        : <SignUp buttonText="Edit comments" onClick={() => { setComment({ comment: record.comment }); }} />}
+                        : <SignUp className="test-comment" buttonText="Edit comments" onClick={() => { setComment({ comment: record.comment }); }} />}
                     </Col>
                     <Col>
                       {location.location
                         ? <SignUp buttonText="Save location" onClick={() => { submitLocation(location.location, record.id); }} />
-                        : <SignUp buttonText="Edit location" onClick={() => { setLocation({ location: record.location }); }} />}
+                        : <SignUp className="test-location" buttonText="Edit location" onClick={() => { setLocation({ location: record.location }); }} />}
                     </Col>
                     <Col>
-                      <SignUp buttonText="Delete record" variant="danger" onClick={() => { setConfirm({ show: true }); }} />
+                      <SignUp className="test-delete" buttonText="Delete record" variant="danger" onClick={() => { setConfirm({ show: true }); }} />
                     </Col>
                   </Row>
                 </Container>

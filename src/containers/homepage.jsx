@@ -5,7 +5,6 @@ import * as componentData from '../store/componentData';
 import BoldHeader from '../components/boldHeader/boldHeader';
 import SignUp from '../components/buttons/signUp';
 import Header from '../components/header/header';
-import Footer from '../components/footer/footer';
 
 const RenderThreeColumImageAndText = () => componentData.imageAndTextBelowData.map(
   imageAndTextBelowData => (
@@ -38,7 +37,6 @@ const HomePage = () => (
         <RenderThreeColumImageAndText />
       </div>
     </section>
-    <Footer className="bottom" />
   </div>
 );
 

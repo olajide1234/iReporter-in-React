@@ -6,12 +6,12 @@ import PropTypes from 'prop-types';
 
 const SignedInAuth = ({ component: Component, isLoggedIn, ...rest }) => (
   <Route
-      {...rest}
-      render={props => (
-        isLoggedIn
-          ? <Redirect to={{ pathname: '/dashboard', state: { from: props.location } }} />
-          : <Component {...props} />)}
-    />
+    {...rest}
+    render={props => (
+      isLoggedIn
+        ? <Redirect to={{ pathname: '/dashboard', state: { from: props.location } }} />
+        : <Component {...props} />)}
+  />
 );
 
 

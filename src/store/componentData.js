@@ -13,7 +13,7 @@ export const imageAndTextBelowData = [
   },
   {
     image: 'https://res.cloudinary.com/dqyytlxwe/image/upload/v1556088312/money.png',
-    headerText: 'No pain, no gain!',
+    headerText: 'No pain, no gain! Act now!',
     bottomText:
       'Does it seem easier to keep quiet and just let that bribe pass? Think of our future, no pain now, no gain tomorrow.'
   }

@@ -1,14 +1,14 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { CardDeck, Button } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 import FullRecord from '../components/fullRecord/fullRecord';
-import NavLinkHeader from '../components/NavLinkHeader';
-import DashboardProfile from '../components/DashboardProfile';
-import DashboardHeader from '../components/DashboardHeader';
+import NavLinkHeader from '../components/navLinkHeader/navLinkHeader';
+import DashboardProfile from '../components/dashboardProfile/dashboardProfile';
+import DashboardHeader from '../components/dashboardHeader/dashboardHeader';
+import DashboardHeaderIntervention from '../components/dashboardHeaderIntervention/dashboardHeaderIntervention';
 import { getRecord } from '../actions/actions';
 import Header from '../components/header/header';
-import Footer from '../components/footer/footer';
 
 
 const SingleRecord = (props) => {
@@ -30,21 +30,13 @@ const SingleRecord = (props) => {
           </div>
           <div className="motivation_box_profile_summary">
             <h3 className="motivation_box_profile_summary_divheader"> Red-flag records</h3>
-            <CardDeck>
-              <DashboardHeader type="red-flag" status="resolved" />
-              <DashboardHeader type="red-flag" status="under-investigation" />
-              <DashboardHeader type="red-flag" status="rejected" />
-            </CardDeck>
+            <DashboardHeader />
           </div>
           <div className="motivation_box_profile_summary motivation_box_profile_summary--bottom">
             <h3 className="motivation_box_profile_summary_divheader motivation_box_profile_summary_divheader--intervention">
               Intervention records
             </h3>
-            <CardDeck>
-              <DashboardHeader type="intervention" status="resolved" />
-              <DashboardHeader type="intervention" status="under-investigation" />
-              <DashboardHeader type="intervention" status="rejected" />
-            </CardDeck>
+            <DashboardHeaderIntervention />
           </div>
         </div>
       </section>
@@ -55,7 +47,6 @@ const SingleRecord = (props) => {
           </div>
         </div>
       </section>
-      <Footer />
     </div>
   );
 };

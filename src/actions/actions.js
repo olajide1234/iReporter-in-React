@@ -1,6 +1,9 @@
 import axios from 'axios';
 import {
-  ADD_USER, GET_RECORD, GET_RECORDS, EDIT_COMMENT, EDIT_LOCATION, DELETE_RECORD, LOGOUT_USER
+  ADD_USER, ADD_RECORD,
+  GET_RECORD, GET_RECORDS,
+  EDIT_COMMENT, EDIT_LOCATION,
+  DELETE_RECORD, LOGOUT_USER
 } from './actionTypes';
 
 export const addRecord = record => async (dispatch) => {
@@ -17,7 +20,7 @@ export const addRecord = record => async (dispatch) => {
       });
 
       dispatch({
-        type: 'ADD_RECORD',
+        type: ADD_RECORD,
         record: data.data[0].new_record
       });
 
@@ -34,14 +37,14 @@ export const addRecord = record => async (dispatch) => {
     });
 
     dispatch({
-      type: 'ADD_RECORD',
+      type: ADD_RECORD,
       record: data.data[0].new_record
     });
 
     return { type: 'success', data: data.data[0].new_record };
   } catch (error) {
     dispatch({
-      type: 'ADD_RECORD',
+      type: ADD_RECORD,
       record: {}
     });
 
@@ -57,7 +60,7 @@ export const getRecord = id => async (dispatch) => {
 
   try {
     const { data } = await axios({
-      url: `https://olajide-ireporter.herokuapp.com/api/v1/records/interventions/${id}`,
+      url: `https://olajide-ireporter.herokuapp.com/api/v1/records/${id}`,
       method: 'GET',
       headers: {
         'x-access-token': token
@@ -82,7 +85,7 @@ export const getRecords = () => async (dispatch) => {
 
   try {
     const { data } = await axios({
-      url: 'https://olajide-ireporter.herokuapp.com/api/v1/records/interventions',
+      url: 'https://olajide-ireporter.herokuapp.com/api/v1/records',
       method: 'GET',
       headers: {
         'x-access-token': token
@@ -112,12 +115,9 @@ export const addUser = userData => async (dispatch) => {
       type: ADD_USER,
       user: data.data[0].user
     });
+
     return data;
   } catch (error) {
-    dispatch({
-      type: ADD_USER,
-      user: {}
-    });
     return error.response.data;
   }
 };
@@ -133,10 +133,6 @@ export const signIn = userData => async (dispatch) => {
     });
     return data;
   } catch (error) {
-    dispatch({
-      type: ADD_USER,
-      user: {}
-    });
     return error.response.data;
   }
 };
@@ -145,7 +141,7 @@ export const editComment = (comment, id) => async (dispatch) => {
   const token = localStorage.getItem('token');
   try {
     const res = await axios({
-      url: `https://olajide-ireporter.herokuapp.com/api/v1/records/interventions/${id}/comment`,
+      url: `https://olajide-ireporter.herokuapp.com/api/v1/records/${id}/comment`,
       method: 'PATCH',
       headers: {
         'x-access-token': token
@@ -175,7 +171,7 @@ export const editLocation = (location, id) => async (dispatch) => {
   const token = localStorage.getItem('token');
   try {
     const res = await axios({
-      url: `https://olajide-ireporter.herokuapp.com/api/v1/records/interventions/${id}/location`,
+      url: `https://olajide-ireporter.herokuapp.com/api/v1/records/${id}/location`,
       method: 'PATCH',
       headers: {
         'x-access-token': token
@@ -205,7 +201,7 @@ export const deleteRecord = id => async (dispatch) => {
   const token = localStorage.getItem('token');
   try {
     const res = await axios({
-      url: `https://olajide-ireporter.herokuapp.com/api/v1/records/interventions/${id}`,
+      url: `https://olajide-ireporter.herokuapp.com/api/v1/records/${id}`,
       method: 'DELETE',
       headers: {
         'x-access-token': token

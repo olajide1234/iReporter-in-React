@@ -7,8 +7,8 @@ import SignInPage from '../containers/signInPage';
 import CreateRecord from '../containers/createRecord';
 import Dashboard from '../containers/dashboard';
 import SingleRecord from '../containers/singleRecord';
-import AuthWrapper from '../components/AuthWrapper';
-import SignedInAuth from '../components/SignedInAuth';
+import AuthWrapper from '../components/authWrapper/authWrapper';
+import SignedInAuth from '../components/signedInAuth/signedInAuth';
 
 
 const AppRouter = () => (

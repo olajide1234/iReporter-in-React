@@ -7,7 +7,6 @@ import * as componentData from '../store/componentData';
 import SignUpForm from '../components/form/signUpForm';
 import { addUser } from '../actions/actions';
 import Header from '../components/header/header';
-import Footer from '../components/footer/footer';
 
 const SignUpPage = (props) => {
   const [errors, setErrors] = useState([]);
@@ -47,7 +46,6 @@ const SignUpPage = (props) => {
           />
         </div>
       </section>
-      <Footer className="bottom" />
     </div>
   );
 };
