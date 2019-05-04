@@ -3,13 +3,12 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Button } from 'react-bootstrap';
 import FullRecord from '../components/fullRecord/fullRecord';
-import NavLinkHeader from '../components/NavLinkHeader';
-import DashboardProfile from '../components/DashboardProfile';
-import DashboardHeader from '../components/DashboardHeader';
-import DashboardHeaderIntervention from '../components/DashboardHeaderIntervention';
+import NavLinkHeader from '../components/navLinkHeader/navLinkHeader';
+import DashboardProfile from '../components/dashboardProfile/dashboardProfile';
+import DashboardHeader from '../components/dashboardHeader/dashboardHeader';
+import DashboardHeaderIntervention from '../components/dashboardHeaderIntervention/dashboardHeaderIntervention';
 import { getRecord } from '../actions/actions';
 import Header from '../components/header/header';
-import Footer from '../components/footer/footer';
 
 
 const SingleRecord = (props) => {
@@ -48,7 +47,6 @@ const SingleRecord = (props) => {
           </div>
         </div>
       </section>
-      <Footer />
     </div>
   );
 };
