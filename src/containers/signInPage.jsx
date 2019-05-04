@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { Alert, Row, Col } from 'react-bootstrap';
+import {
+  Alert, Row, Col
+} from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import BoldHeader from '../components/boldHeader/boldHeader';
 import * as componentData from '../store/componentData';
 import SignInForm from '../components/form/signInForm';
 import { signIn } from '../actions/actions';
+import Header from '../components/header/header';
+import Footer from '../components/footer/footer';
 
 const SignInPage = (props) => {
   const [errors, setErrors] = useState([]);
@@ -31,6 +35,7 @@ const SignInPage = (props) => {
 
   return (
     <div>
+      <Header props={props} />
       <section className="introduction introduction_signin_page">
         <div className="container_formpage">
           <div className="introduction_signup_and_signin">
@@ -39,12 +44,13 @@ const SignInPage = (props) => {
               textBody={componentData.signInPageHeader.paragraph}
             />
           </div>
-          <Row><Col md={{ span: 12 }}>{renderErrors(errors)}</Col></Row>
+          <Row className="justify-content-md-center"><Col md={{ span: 6 }}>{renderErrors(errors)}</Col></Row>
           <SignInForm
             onSubmit={(userData) => { submit(userData); }}
           />
         </div>
       </section>
+      <Footer className="bottom" />
     </div>
   );
 };
