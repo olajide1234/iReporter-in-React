@@ -7,7 +7,9 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #f4f4f4;
+  min-height: 100vh;
   font-size: 15px;
+  line-height: 1.5;
 }
 
 a {
@@ -25,7 +27,6 @@ a:hover {
 .card {
   margin-top: 20px;
 }
-
 
 .upper-case {
   text-transform: uppercase
@@ -249,7 +250,6 @@ margin-bottom: 5px;
   margin-left: 0px;
   cursor: pointer;
   text-transform: uppercase;
-  border-color: #2ecc71;
 }
 
 .introduction_buttons--redflag {
@@ -326,14 +326,17 @@ color: #d35400;
 
 .introduction_buttons--signup:hover, .introduction_buttons--viewall:hover, .introduction_buttons--signin:hover, .introduction_buttons--signup-form:hover {
   color: #48474A;
-  background-color: #2ecc71;
-  border-color: #2ecc71;
+  background-color: #A5A6A8;
+  transition: background-color 1.5s;
+  transition: color 1.5s;
 }
 
 .introduction_buttons--redflag:not(.introduction_buttons--redflag--recordcard):hover{
   color: #48474A;
-  background-color: #2ecc71;
-  border-color: #2ecc71;
+  background-color: #A5A6A8;
+  transition: background-color 1.5s;
+  transition: color 1.5s;
+
 }
 
 
@@ -365,6 +368,7 @@ margin-top: 30px;
     width: 95%;
     text-align: center;
     float:none;
+    margin: 2%;
   }
 
   .motivation_box_profile_record {
@@ -381,7 +385,6 @@ margin-top: 30px;
     border-radius: 5px;
     border: 1px solid #c1c1c1;
     margin-top: 0;
-    margin-bottom: 1rem;
   }
 
 .motivation_box_profile_details_outer{
@@ -410,7 +413,7 @@ margin-top: 30px;
 
   .motivation_box_profile_details--initials {
     font-size: 80px;
-    margin: 0.1%;
+    margin: 0.2%;
     padding: 0;
   }
   .motivation_box_profile_details--text {
@@ -649,12 +652,6 @@ margin-bottom: 20px;
   color: white;
   background-color: #575559;
   bottom: 0;
-  
-}
-
-.bottom {
-  position: fixed;
-  width: 100%;
 }
 
 /*map*/

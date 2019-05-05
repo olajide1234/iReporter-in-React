@@ -10,11 +10,11 @@ const Alerts = (props) => {
 
   return (
     <div className="d-flex justify-content-center">
-      {show ? (
+      { show ? (
         <Alert className="alert-style" dismissible variant={variant} onClose={closeAlertModal}>
           {message}
         </Alert>
-      ) : null}
+      ) : null }
     </div>
   );
 };

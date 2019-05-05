@@ -2,18 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { Button } from 'react-bootstrap';
-import { signOut } from '../../actions/actions';
 
 const Header = (props) => {
   const { user: { firstname } } = props;
-
-  const logOut = () => {
-    localStorage.removeItem('token');
-    localStorage.removeItem('profile');
-    props.signOut();
-    props.props.history.push('/');
-  };
 
   if (firstname) {
     return (
@@ -30,11 +21,6 @@ const Header = (props) => {
             </h1>
           </div>
           <nav className="header_nav">
-            <Button variant="secondary" onClick={logOut} className="header_branding--url header_branding--url-signout header_branding--url-signout--in ml-4">
-              SIGN OUT
-            </Button>
-          </nav>
-          <nav className="header_nav">
             <p className="header_branding--url header_branding--url-signout header_branding--url-signout--in">
               Hi
               {' '}
@@ -50,33 +36,29 @@ const Header = (props) => {
       <div className="container">
         <div className="header_branding">
           <h1 className="header_branding--text">
-            <Link to="/">
-              <p className="header_branding--url">
-                <span className="header_branding--highlight">i</span>
-                Reporter
-              </p>
-            </Link>
+            <a className="header_branding--url" href="index.html">
+              <span className="header_branding--highlight">i</span>
+              Reporter
+            </a>
           </h1>
         </div>
         <nav className="header_nav header_branding--url-signout--buttonnav">
-          <Link to="/sign_up">
-            <button className="header_branding--url-signout--button">
-              <a
-                className="header_branding--url header_branding--url-signout"
-              >
-                Sign up
-              </a>
-            </button>
-          </Link>
+          <button className="header_branding--url-signout--button">
+            <a
+              className="header_branding--url header_branding--url-signout"
+              href="sign_up"
+            >
+              Sign up
+            </a>
+          </button>
         </nav>
         <nav className="header_nav">
-          <Link to="/sign_in">
-            <a
-              className="header_branding--url header_branding--url-signout header_branding--url-signout--in"
-            >
-              SIGN IN
-            </a>
-          </Link>
+          <a
+            className="header_branding--url header_branding--url-signout header_branding--url-signout--in"
+            href="sign_in"
+          >
+            SIGN IN
+          </a>
         </nav>
       </div>
     </header>
@@ -88,10 +70,8 @@ const mapStateToProps = state => ({
 });
 
 Header.propTypes = {
-  user: PropTypes.object.isRequired,
-  history: PropTypes.object.isRequired,
-  signOut: PropTypes.func.isRequired,
-  props: PropTypes.object.isRequired,
+  user: PropTypes.object.isRequired
 };
 
-export default connect(mapStateToProps, { signOut })(Header);
+
+export default connect(mapStateToProps)(Header);

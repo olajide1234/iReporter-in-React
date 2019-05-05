@@ -6,6 +6,8 @@ class SignUpForm extends Component {
   state = {
     firstname: '',
     lastname: '',
+    othernames: '',
+    phoneNumber: '',
     email: '',
     username: '',
     password: ''
@@ -20,11 +22,13 @@ class SignUpForm extends Component {
   onSubmit = (e) => {
     e.preventDefault();
     const {
-      firstname, lastname, username, email, password
+      firstname, lastname, othernames, phoneNumber, username, email, password
     } = this.state;
     this.props.onSubmit({
       firstname,
       lastname,
+      othernames,
+      phoneNumber,
       username,
       email,
       password
@@ -48,6 +52,20 @@ class SignUpForm extends Component {
             placeholder="Last name"
             onChange={this.onChange}
             name="lastname"
+          />
+          <input
+            className="container_formfield--text"
+            type="text"
+            placeholder="Othernames"
+            onChange={this.onChange}
+            name="othernames"
+          />
+          <input
+            className="container_formfield--text"
+            type="text"
+            placeholder="Tel number"
+            onChange={this.onChange}
+            name="phoneNumber"
           />
           <input
             className="container_formfield--text"
