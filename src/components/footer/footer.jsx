@@ -1,10 +1,14 @@
 import React from 'react';
-// import "./footer.css";
+import PropTypes from 'prop-types';
 
-const Footer = () => (
-  <footer className="footer">
+const Footer = ({ className }) => (
+  <footer className={`footer ${className}`}>
     <p> iReporter &copy; 2019</p>
   </footer>
 );
+
+Footer.propTypes = {
+  className: PropTypes.string.isRequired
+};
 
 export default Footer;
