@@ -4,11 +4,10 @@ import PropTypes from 'prop-types';
 import BoldHeader from '../components/boldHeader/boldHeader';
 import Form from '../components/form/form';
 import * as componentData from '../store/componentData';
-import NavLinkHeader from '../components/NavLinkHeader';
+import NavLinkHeader from '../components/navLinkHeader/navLinkHeader';
 import { addRecord } from '../actions/actions';
-import Alerts from '../components/Alerts';
+import Alerts from '../components/alerts/alerts';
 import Header from '../components/header/header';
-import Footer from '../components/footer/footer';
 
 
 const CreateRecord = (props) => {
@@ -47,7 +46,6 @@ const CreateRecord = (props) => {
           </div>
         </div>
       </section>
-      <Footer />
     </div>
   );
 };

@@ -6,8 +6,8 @@ import {
 } from 'react-bootstrap';
 import SignUp from '../buttons/signUp';
 import { editComment, editLocation, deleteRecord } from '../../actions/actions';
-import Alerts from '../Alerts';
-import ModalAlert from '../ModalAlert/modalAlert';
+import Alerts from '../alerts/alerts';
+import ModalAlert from '../modalAlert/modalAlert';
 
 
 const FullRecord = (props) => {
@@ -161,15 +161,15 @@ const FullRecord = (props) => {
                     <Col>
                       {comment.comment
                         ? <SignUp buttonText="Save comments" onClick={() => { submit(comment.comment, record.id); }} />
-                        : <SignUp buttonText="Edit comments" onClick={() => { setComment({ comment: record.comment }); }} />}
+                        : <SignUp className="test-comment" buttonText="Edit comments" onClick={() => { setComment({ comment: record.comment }); }} />}
                     </Col>
                     <Col>
                       {location.location
                         ? <SignUp buttonText="Save location" onClick={() => { submitLocation(location.location, record.id); }} />
-                        : <SignUp buttonText="Edit location" onClick={() => { setLocation({ location: record.location }); }} />}
+                        : <SignUp className="test-location" buttonText="Edit location" onClick={() => { setLocation({ location: record.location }); }} />}
                     </Col>
                     <Col>
-                      <SignUp buttonText="Delete record" variant="danger" onClick={() => { setConfirm({ show: true }); }} />
+                      <SignUp className="test-delete" buttonText="Delete record" variant="danger" onClick={() => { setConfirm({ show: true }); }} />
                     </Col>
                   </Row>
                 </Container>

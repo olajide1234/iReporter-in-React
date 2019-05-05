@@ -3,7 +3,13 @@
 
 module.exports = {
   clearMocks: true,
-  collectCoverageFrom: ['src/**/*.{js,jsx,mjs}'],
+  collectCoverageFrom: [
+    'src/components/**/*.{js,jsx,mjs}',
+    'src/reducers/**/*.{js,jsx,mjs}',
+    'src/actions/**/*.{js,jsx,mjs}',
+    '!src/index.js',
+    '!src/routes.js'
+  ],
   coverageDirectory: 'coverage',
   moduleFileExtensions: ['js', 'json', 'jsx'],
   moduleNameMapper: {
@@ -21,9 +27,9 @@ module.exports = {
   },
   verbose: false,
   coverageReporters: [
-    "json-summary",
-    "text",
-    "lcov"
+    'json-summary',
+    'text',
+    'lcov'
   ],
   collectCoverage: true
 };

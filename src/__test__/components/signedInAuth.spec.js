@@ -1,13 +1,13 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { mount, } from 'enzyme';
 import { MemoryRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
-import FullRecord from '../../components/fullRecord/fullRecord';
+import SignedInAuth from '../../components/signedInAuth/signedInAuth';
 
 
-describe('Display full record', () => {
+describe('Signed In Auth wrapper', () => {
   const mockStore = configureStore([thunk]);
   let component;
   const stat = {
@@ -19,16 +19,6 @@ describe('Display full record', () => {
     interventionResolved: '0',
     interventionRejected: '0',
     interventionInvestigation: '0'
-  };
-  const user = {
-    id: 23,
-    firstname: 'jejejej',
-    lastname: 'ejejjejej',
-    email: 'eeiekek@gmail.com',
-    username: 'ejejjjejje',
-    registered: '2019-05-04T00:00:00.000Z',
-    isadmin: null,
-    password: '$2b$08$d1ruzsjnYsfpi00mG8q5PuZ4YS.kka8rqkOPiqSDAysadgi0TSpza'
   };
   const record = {
     id: 23,
@@ -42,13 +32,13 @@ describe('Display full record', () => {
     images: 'www.null.com',
     videos: 'www.null.com',
     location: 'ddee',
-    status: 'draft'
+    status: 'resolved'
   };
-  it('should render a full record correctly', () => {
+  it('should redirect to dashboard', () => {
     const store = mockStore({
       user: {
-        isLoggedIn: true,
-        currentUser: user
+        isLoggedIn: false,
+        currentUser: null
       },
       recordsReducer: {
         records: {},
@@ -58,20 +48,20 @@ describe('Display full record', () => {
     });
 
     const props = {
-      record,
-      user
+      isLoggedIn: true,
+      component: '<SingleRecord/ >'
     };
 
     component = mount(
       <Provider store={store}>
         <MemoryRouter>
-          <FullRecord {...props} />
+          <SignedInAuth {...props} />
           , context:
           {}
           , attachTo: DOMElement
         </MemoryRouter>
       </Provider>
     );
-    expect(component.find('FullRecord').exists()).toBe(true);
+    expect(component.find('d').exists()).toBe(true);
   });
 });

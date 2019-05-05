@@ -9,7 +9,6 @@ import * as componentData from '../store/componentData';
 import SignInForm from '../components/form/signInForm';
 import { signIn } from '../actions/actions';
 import Header from '../components/header/header';
-import Footer from '../components/footer/footer';
 
 const SignInPage = (props) => {
   const [errors, setErrors] = useState([]);
@@ -50,7 +49,6 @@ const SignInPage = (props) => {
           />
         </div>
       </section>
-      <Footer className="bottom" />
     </div>
   );
 };

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { Card, CardDeck } from 'react-bootstrap';
 import {
   interventionInvestigation, interventionRejected, interventionResolved, interventionDraft
-} from '../actions/stats';
+} from '../../actions/stats';
 
 
 const DashboardHeaderIntervention = (props) => {

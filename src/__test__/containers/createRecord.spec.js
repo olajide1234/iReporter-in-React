@@ -53,5 +53,6 @@ describe('Create record page', () => {
       </Provider>
     );
     expect(component.find('Form').exists()).toBe(true);
+    expect(component.find('.container_formfield').exists()).toBe(true);
   });
 });

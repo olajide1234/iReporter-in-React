@@ -1,6 +1,9 @@
 import axios from 'axios';
 import {
-  ADD_USER, GET_RECORD, GET_RECORDS, EDIT_COMMENT, EDIT_LOCATION, DELETE_RECORD, LOGOUT_USER
+  ADD_USER, ADD_RECORD,
+  GET_RECORD, GET_RECORDS,
+  EDIT_COMMENT, EDIT_LOCATION,
+  DELETE_RECORD, LOGOUT_USER
 } from './actionTypes';
 
 export const addRecord = record => async (dispatch) => {
@@ -17,7 +20,7 @@ export const addRecord = record => async (dispatch) => {
       });
 
       dispatch({
-        type: 'ADD_RECORD',
+        type: ADD_RECORD,
         record: data.data[0].new_record
       });
 
@@ -34,14 +37,14 @@ export const addRecord = record => async (dispatch) => {
     });
 
     dispatch({
-      type: 'ADD_RECORD',
+      type: ADD_RECORD,
       record: data.data[0].new_record
     });
 
     return { type: 'success', data: data.data[0].new_record };
   } catch (error) {
     dispatch({
-      type: 'ADD_RECORD',
+      type: ADD_RECORD,
       record: {}
     });
 
