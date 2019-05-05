@@ -6,6 +6,8 @@ import BoldHeader from '../components/boldHeader/boldHeader';
 import * as componentData from '../store/componentData';
 import SignUpForm from '../components/form/signUpForm';
 import { addUser } from '../actions/actions';
+import Header from '../components/header/header';
+import Footer from '../components/footer/footer';
 
 const SignUpPage = (props) => {
   const [errors, setErrors] = useState([]);
@@ -30,6 +32,7 @@ const SignUpPage = (props) => {
 
   return (
     <div>
+      <Header props={props} />
       <section className="introduction introduction_signin_page">
         <div className="container_formpage">
           <div className="introduction_signup_and_signin">
@@ -38,12 +41,13 @@ const SignUpPage = (props) => {
               textBody={componentData.signUpPageHeader.paragraph}
             />
           </div>
-          <Row><Col md={{ span: 12 }}>{renderErrors(errors)}</Col></Row>
+          <Row className="justify-content-md-center"><Col md={{ span: 6 }}>{renderErrors(errors)}</Col></Row>
           <SignUpForm
             onSubmit={(userData) => { submit(userData); }}
           />
         </div>
       </section>
+      <Footer className="bottom" />
     </div>
   );
 };

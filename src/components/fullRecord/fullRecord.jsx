@@ -63,7 +63,7 @@ const FullRecord = (props) => {
   const onDelete = async (recordId) => {
     props.deleteRecord(recordId).then((res) => {
       if (res.type === 'error') { setAlertMessage({ message: `${res.message}`, visibility: true }); } else {
-        props.history.push('/dashboard');
+        props.props.history.push('/dashboard');
       }
     });
   };
@@ -91,9 +91,13 @@ const FullRecord = (props) => {
           <Container>
             <Row className="mb-5">
               <Col>
+                DATE OF INCIDENT:
+                {' '}
                 {record.dateofincident}
               </Col>
               <Col className="upper-case">
+                Record type:
+                {' '}
                 {record.type}
               </Col>
               <Col className="upper-case">
@@ -103,7 +107,14 @@ const FullRecord = (props) => {
                       <Form.Control as="textarea" rows="3" defaultValue={location.location} onChange={onChangeLocation} name="location" />
                     </Form>
                   )
-                  : record.location}
+                  : (
+                    <p>
+                      Location:
+                      {record.location}
+                      {' '}
+
+                    </p>
+                  )}
               </Col>
             </Row>
           </Container>
@@ -118,25 +129,26 @@ const FullRecord = (props) => {
           </Card.Text>
           <Container>
             <Row className="mt-3">
-              <Col>
-                <img
-                  src={`${record.images}`}
-                  alt="Police corruption"
-                  width="300"
-                  height="200"
-                />
-              </Col>
-              <Col>
-                <iframe
-                  title="Incident video"
-                  width="200"
-                  height="150"
-                  src="https://www.youtube.com/embed/arodYGXdzlc"
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                />
-              </Col>
+              {record.images
+                ? (
+                  <Col>
+                    <img
+                      src={`${record.images}`}
+                      alt="Evidence"
+                      width="300"
+                      height="200"
+                    />
+                  </Col>
+                ) : null}
+              {record.videos
+                ? (
+                  <Col>
+                    <video width="320" height="240" controls>
+                      <source src={`${record.videos}`} type="video/mp4" />
+                      Your browser does not support the video tag.
+                    </video>
+                  </Col>
+                ) : null}
             </Row>
           </Container>
         </Card.Body>
@@ -181,6 +193,7 @@ FullRecord.propTypes = {
   editComment: PropTypes.func.isRequired,
   history: PropTypes.object.isRequired,
   deleteRecord: PropTypes.func.isRequired,
+  props: PropTypes.object.isRequired,
 };
 
 export default connect(mapStateToProps, { editComment, editLocation, deleteRecord })(FullRecord);

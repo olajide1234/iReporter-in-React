@@ -19,9 +19,9 @@ const ModalAlert = (props) => {
           <Button variant="secondary" onClick={cancel}>
             Close
           </Button>
-          <button variant="primary" onClick={confirm}>
+          <Button variant="primary" onClick={confirm}>
             {confirmButton}
-          </button>
+          </Button>
         </Modal.Footer>
       </Modal>
     </>

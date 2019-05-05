@@ -13,7 +13,7 @@ const RecordSummary = props => props.records.map(record => (
         <Card.Header className="upper-case">
           {record.status}
           {' '}
-          {record.owner_id === props.user.id ? <p className="float-right">Created by me</p> : null }
+          {record.owner_id === props.user.id ? <p className="float-right">Created by me</p> : null}
           {' '}
         </Card.Header>
         <Card.Body>
@@ -24,12 +24,18 @@ const RecordSummary = props => props.records.map(record => (
           <Container>
             <Row className="mb-5">
               <Col>
+                DATE OF INCIDENT:
+                {' '}
                 {record.dateofincident}
               </Col>
               <Col className="upper-case">
+                Record type:
+                {' '}
                 {record.type}
               </Col>
               <Col className="upper-case">
+                Location:
+                {' '}
                 {record.location}
               </Col>
             </Row>

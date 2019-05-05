@@ -5,12 +5,14 @@ import thunk from 'redux-thunk';
 import userReducer from '../reducers/authReducer';
 import recordsReducer from '../reducers/recordReducer';
 import { CURRENT_USER } from '../actions/actionTypes';
+import statReducer from '../reducers/statReducer';
 
 
 const store = createStore(
   combineReducers({
     user: userReducer,
-    recordsReducer
+    recordsReducer,
+    statReducer
   }),
   compose(
     applyMiddleware(thunk),

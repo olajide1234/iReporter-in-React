@@ -1,28 +1,32 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { Card, ListGroup, ListGroupItem } from 'react-bootstrap';
 
 const DashboardProfile = (props) => {
   const {
     user: {
-      firstname, lastname, username, email, phonenumber
+      firstname, lastname, email
     }
   } = props;
 
   return (
-    <div className="motivation_box_profile motivation_box_profile_details">
-      <h2 className="motivation_box_profile_details--initials">
-        {firstname.charAt(0)}
-        {lastname.charAt(0)}
-      </h2>
-      <h4 className="motivation_box_profile_details--text">
-        {firstname}
-        {lastname}
-      </h4>
-      <p className="motivation_box_profile_details--text">{username}</p>
-      <p className="motivation_box_profile_details--text">{email}</p>
-      <p className="motivation_box_profile_details--text">{phonenumber}</p>
-    </div>
+
+    <Card>
+      <Card.Body>
+        <Card.Title>
+          {' '}
+          <h2 className="motivation_box_profile_details--initials">
+            {firstname.charAt(0)}
+            {lastname.charAt(0)}
+          </h2>
+        </Card.Title>
+      </Card.Body>
+      <ListGroup className="list-group-flush">
+        <ListGroupItem>{firstname}</ListGroupItem>
+        <ListGroupItem>{email}</ListGroupItem>
+      </ListGroup>
+    </Card>
   );
 };
 
