@@ -7,19 +7,16 @@ import SignInPage from '../containers/signInPage';
 import CreateRecord from '../containers/createRecord';
 import Dashboard from '../containers/dashboard';
 import SingleRecord from '../containers/singleRecord';
-import AuthWrapper from '../components/AuthWrapper';
-import SignedInAuth from '../components/SignedInAuth';
-
 
 const AppRouter = () => (
   <div>
     <Switch>
-      <SignedInAuth path="/" exact component={HomePage} />
-      <SignedInAuth path="/sign_up" component={SignUpPage} />
-      <SignedInAuth path="/sign_in" component={SignInPage} />
-      <AuthWrapper path="/dashboard" component={Dashboard} />
-      <AuthWrapper path="/single/:id" exact component={SingleRecord} />
-      <AuthWrapper path="/create_record" component={CreateRecord} />
+      <Route path="/" exact component={HomePage} />
+      <Route path="/sign_up" component={SignUpPage} />
+      <Route path="/sign_in" component={SignInPage} />
+      <Route path="/dashboard" component={Dashboard} />
+      <Route path="/single/:id" exact component={SingleRecord} />
+      <Route path="/create_record" component={CreateRecord} />
       <Route component={NotFound} exact />
     </Switch>
   </div>

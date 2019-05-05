@@ -7,9 +7,6 @@ import * as componentData from '../store/componentData';
 import NavLinkHeader from '../components/NavLinkHeader';
 import { addRecord } from '../actions/actions';
 import Alerts from '../components/Alerts';
-import Header from '../components/header/header';
-import Footer from '../components/footer/footer';
-
 
 const CreateRecord = (props) => {
   const [alertMessage, setAlertMessage] = useState({
@@ -19,7 +16,6 @@ const CreateRecord = (props) => {
 
   return (
     <div>
-      <Header props={props} />
       <NavLinkHeader title="/ CREATE RECORD" />
       <Alerts
         message={alertMessage.message}
@@ -47,7 +43,6 @@ const CreateRecord = (props) => {
           </div>
         </div>
       </section>
-      <Footer />
     </div>
   );
 };

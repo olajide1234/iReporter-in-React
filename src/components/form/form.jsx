@@ -11,8 +11,8 @@ class Form extends Component {
     title: '',
     type: '',
     comment: '',
-    images: '',
-    videos: '',
+    images: 'www.null.com',
+    videos: 'www.null.com',
     location: ''
   };
 
@@ -25,8 +25,10 @@ class Form extends Component {
   onImageUpload = async (e) => {
     try {
       const file = (e.target.files[0]);
+
       const formData = new FormData();
       formData.append('file', file);
+      formData.append('upload_preset', CLOUDINARY_UPLOAD_PRESET);
       const { data } = await axios({
         url: CLOUDINARY_URL,
         method: 'POST',
@@ -123,7 +125,7 @@ class Form extends Component {
             onChange={this.onImageUpload}
             name="images"
           />
-          <p className="container_formfield_label">Upload video (mp4 only, please allow up to a minute for upload)</p>
+          <p className="container_formfield_label">Upload video</p>
           <input
             className="container_formfield--text container_formfield--file"
             type="file"
