@@ -1,11 +1,11 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { mount, shallow } from 'enzyme';
 import { MemoryRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import AuthWrapper from '../../components/authWrapper/authWrapper';
-
+import SignInPage from '../../containers/signInPage';
 
 describe('Auth wrapper', () => {
   const mockStore = configureStore([thunk]);
@@ -50,10 +50,10 @@ describe('Auth wrapper', () => {
 
     const props = {
       isLoggedIn: true,
-      component: '<SingleRecord/ >'
+      component: true
     };
 
-    component = mount(
+    component = shallow(
       <Provider store={store}>
         <MemoryRouter>
           <AuthWrapper {...props} />
@@ -63,6 +63,6 @@ describe('Auth wrapper', () => {
         </MemoryRouter>
       </Provider>
     );
-    expect(component.find('SignInPage').exists()).toBe(true);
+    expect(component.find('SignInPage').exists()).toBe(false);
   });
 });
