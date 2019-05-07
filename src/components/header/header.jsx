@@ -30,7 +30,7 @@ const Header = (props) => {
             </h1>
           </div>
           <nav className="header_nav">
-            <Button variant="secondary" onClick={logOut} className="header_branding--url header_branding--url-signout header_branding--url-signout--in ml-4">
+            <Button variant="secondary" onClick={logOut} className="header_branding--url header_branding--url-signout header_branding--url-signout--in ml-4 test-logout">
               SIGN OUT
             </Button>
           </nav>

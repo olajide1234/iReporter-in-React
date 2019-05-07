@@ -326,9 +326,10 @@ color: #d35400;
 }
 
 .introduction_buttons--signup:hover, .introduction_buttons--viewall:hover, .introduction_buttons--signin:hover, .introduction_buttons--signup-form:hover {
-  color: #48474A;
   background-color: #2ecc71;
   border-color: #2ecc71;
+  transition: box-shadow 1s;
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
 
 .introduction_buttons--redflag:not(.introduction_buttons--redflag--recordcard):hover{

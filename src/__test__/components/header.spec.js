@@ -1,13 +1,14 @@
 import React from 'react';
-import { mount, } from 'enzyme';
+import { mount } from 'enzyme';
 import { MemoryRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
-import SignedInAuth from '../../components/signedInAuth/signedInAuth';
-import SingleRecord from '../../containers/singleRecord';
+import Header from '../../components/header/header';
 
-describe('Signed In Auth wrapper', () => {
+
+describe('Display header component', () => {
+  const logOut = jest.fn();
   const mockStore = configureStore([thunk]);
   let component;
   const stat = {
@@ -42,12 +43,12 @@ describe('Signed In Auth wrapper', () => {
     images: 'www.null.com',
     videos: 'www.null.com',
     location: 'ddee',
-    status: 'resolved'
+    status: 'draft'
   };
-  it('should redirect to dashboard', () => {
+  it('should render header component correctly', () => {
     const store = mockStore({
       user: {
-        isLoggedIn: false,
+        isLoggedIn: true,
         currentUser: user
       },
       recordsReducer: {
@@ -58,20 +59,28 @@ describe('Signed In Auth wrapper', () => {
     });
 
     const props = {
-      isLoggedIn: true,
-      component: SingleRecord
+      history: []
+    };
+
+    const prop = {
+      user,
+      props
     };
 
     component = mount(
       <Provider store={store}>
         <MemoryRouter>
-          <SignedInAuth {...props} />
+          <Header {...prop} />
           , context:
           {}
           , attachTo: DOMElement
         </MemoryRouter>
       </Provider>
     );
-    expect(component.find('SingleRecord').exists()).toBe(true);
+    expect(component.find('Header').exists()).toBe(true);
+
+    component.find('.test-logout').at(0).simulate('click');
+
+    expect(logOut).toHaveBeenCalledTimes(0);
   });
 });
